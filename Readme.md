@@ -18,13 +18,13 @@ To use this repository we assume that you have a working install of ROS Kinetic.
 Follow the steps to install this workspace:
 1. Clone the repository 
 
-`git clone `
+- `git clone https://github.com/ROBOBREIZH/robobreizh_simu_ws.git`
 
 2. Install the dependencies
 
-`cd robobreizh_simu_ws`
+- `cd robobreizh_simu_ws`
 
-`chmod +x ./install.sh && ./install.sh`
+- `chmod +x ./install.sh && ./install.sh`
 
 3. Build the workspace
 

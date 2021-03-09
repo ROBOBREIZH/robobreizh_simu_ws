@@ -1,13 +1,14 @@
 RoboBreizh Simulation Workspace
 ==============
 
+## Environment 
 The code of this workspace works with Ubuntu 16.04 and ROS Kinetic. 
 Some parts have been fork from others repositories:
 
-## 3D Gazebo House Environment
+### 3D Gazebo House Environment
 [https://github.com/aws-robotics/aws-robomaker-small-house-world](https://github.com/aws-robotics/aws-robomaker-small-house-world)
 
-## Pepper 3D Simulation
+### Pepper 3D Simulation
 Modify URDF and Velocity Plugin
 
 [https://github.com/uchile-robotics-forks/pepper_virtual/tree/feat-magiclab_pepper](https://github.com/uchile-robotics-forks/pepper_virtual/tree/feat-magiclab_pepper)

@@ -1,0 +1,2 @@
+gazebo_environment/aws-robomaker-small-house-world:gazebo_environment/pepper_robot/pepper_bringup:gazebo_environment/pepper_robot/pepper_description:gazebo_environment/pepper_robot/pepper_robot:gazebo_environment/pepper_robot/pepper_sensors_py:gazebo_environment/pepper_virtual/gazebo_model_velocity_plugin:gazebo_environment/pepper_virtual/pepper_control:gazebo_environment/pepper_virtual/pepper_gazebo_plugin
+-DCATKIN_DEVEL_PREFIX=/home/maelic/robobreizh_simu_ws/devel -DCMAKE_INSTALL_PREFIX=/home/maelic/robobreizh_simu_ws/install -G Unix Makefiles

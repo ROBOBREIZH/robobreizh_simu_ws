@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-source ../../devel/setup.bash
+source ../../../devel/setup.bash
 rosclean purge -y
 echo  "What kind of mapping? type 1 or 2"
 echo  "1. Autonomous mapping using rrt exploration"

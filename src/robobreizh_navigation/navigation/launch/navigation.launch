@@ -1,26 +1,29 @@
+<?xml version="1.0"?>
 <launch>
- <!-- Depth Image -> Pointcloud -->
-    <node pkg="nodelet" type="nodelet" args="manager" name="depth_image_nodelet_manager" output="screen"/>
-    <node pkg="nodelet" type="nodelet" name="pepper_pointcloud" args="load depth_image_proc/point_cloud_xyz depth_image_nodelet_manager --no-bond">
-        <remap from="camera_info" to="/pepper/camera/depth/camera_info"/>
-        <remap from="image_rect" to="/pepper/camera/depth/image_raw"/>
-    </node>
+    <param name="use_sim_time" value="true" />
 
-    <!-- Pointcloud -> Laserscan -->
-    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pepper_fake_laser">
-        <remap from="cloud_in" to="points" />
-        <param name="scan_time" type="double" value="0.2" />
-        <param name="range_min" type="double" value="0.4" />
-        <param name="range_max" type="double" value="8.0" />
-        <param name="use_inf" type="boolean" value="true" />
-        <param name="min_height" type="double" value="0.05" />
-        <param name="max_height" type="double" value="1.0" />
-        <param name="target_frame" type="string" value="base_footprint" />
-        <param name="concurrency_level" type="int" value="0" />
-    </node>
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
 
-  <include file="$(find pepper_nav_bringup)/launch/nav.launch">
-  	<arg name="map" value="$(find navigation)/src/mapping/mymap.yaml" />
-  </include>
+    <rosparam file="$(find navigation)/nav_config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/nav_config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navigation)/nav_config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navigation)/nav_config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/nav_config/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find navigation)/nav_config/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/nav_config/navfn_global_planner_params.yaml" command="load" />
+  </node>
+
+    <arg name="map_file" default="$(find navigation)/src/mapping/map.yaml" />
+    <arg name="map" default="$(arg map_file)" />
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)"/>
+
+    <include file="$(find navigation)/launch/amcl.launch">
+        <arg name="topic_scan" value="/pepper/laser_2" />
+    </include>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find navigation)/rviz_config/nav.rviz" />
+
+<node pkg="rostopic" type="rostopic" name="arbitrary_name" args="pub -1 /pepper/Head_controller/command trajectory_msgs/JointTrajectory '{joint_names: [HeadPitch, HeadYaw], points:[{positions: [0.25, -0.0], time_from_start: [1.0, 0]}]}'" output="screen"/>
 
 </launch>

@@ -9,8 +9,11 @@ Some parts have been fork from others repositories:
 
 ## Pepper 3D Simulation
 Modify URDF and Velocity Plugin
+
 [https://github.com/uchile-robotics-forks/pepper_virtual/tree/feat-magiclab_pepper](https://github.com/uchile-robotics-forks/pepper_virtual/tree/feat-magiclab_pepper)
+
 Control and Pepper Description packages
+
 [https://github.com/awesomebytes/pepper_robot](https://github.com/awesomebytes/pepper_robot)
 
 ## Installation
@@ -28,4 +31,4 @@ Follow the steps to install this workspace:
 
 3. Build the workspace
 
-`catkin_make && source devel/setup.bash`
+- `catkin_make && source devel/setup.bash`

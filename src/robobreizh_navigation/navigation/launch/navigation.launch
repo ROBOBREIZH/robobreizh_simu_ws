@@ -1,0 +1,26 @@
+<launch>
+ <!-- Depth Image -> Pointcloud -->
+    <node pkg="nodelet" type="nodelet" args="manager" name="depth_image_nodelet_manager" output="screen"/>
+    <node pkg="nodelet" type="nodelet" name="pepper_pointcloud" args="load depth_image_proc/point_cloud_xyz depth_image_nodelet_manager --no-bond">
+        <remap from="camera_info" to="/pepper/camera/depth/camera_info"/>
+        <remap from="image_rect" to="/pepper/camera/depth/image_raw"/>
+    </node>
+
+    <!-- Pointcloud -> Laserscan -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pepper_fake_laser">
+        <remap from="cloud_in" to="points" />
+        <param name="scan_time" type="double" value="0.2" />
+        <param name="range_min" type="double" value="0.4" />
+        <param name="range_max" type="double" value="8.0" />
+        <param name="use_inf" type="boolean" value="true" />
+        <param name="min_height" type="double" value="0.05" />
+        <param name="max_height" type="double" value="1.0" />
+        <param name="target_frame" type="string" value="base_footprint" />
+        <param name="concurrency_level" type="int" value="0" />
+    </node>
+
+  <include file="$(find pepper_nav_bringup)/launch/nav.launch">
+  	<arg name="map" value="$(find navigation)/src/mapping/mymap.yaml" />
+  </include>
+
+</launch>

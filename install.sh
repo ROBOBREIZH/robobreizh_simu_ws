@@ -13,4 +13,5 @@ sudo apt-get install ros-kinetic-pepper-meshes
 sudo apt-get install python-opencv -y
 sudo apt-get install python-numpy -y
 sudo apt-get install python-scikits-learn -y
+sudo apt-get install ros-kinetic-rosbash -y
 

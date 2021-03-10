@@ -6,9 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Path1/Status1
       Splitter Ratio: 0.5
-    Tree Height: 513
+    Tree Height: 359
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -192,7 +191,7 @@ Visualization Manager:
       Marker Topic: /global_detector_shapes
       Name: Marker
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -200,7 +199,7 @@ Visualization Manager:
       Marker Topic: /local_detector_shapes
       Name: Marker
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -208,7 +207,7 @@ Visualization Manager:
       Marker Topic: /centroids
       Name: Marker
       Namespaces:
-        markers3: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -629,25 +628,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 17.7222252
+      Distance: 13.886939
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.266406059
-        Y: -0.126481369
-        Z: 4.66128445
+        X: 1.84245992
+        Y: -1.73754442
+        Z: 4.43443108
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.30479658
+      Pitch: 1.45979643
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.56350946
+      Yaw: 4.68851185
     Saved: ~
 Window Geometry:
   Displays:

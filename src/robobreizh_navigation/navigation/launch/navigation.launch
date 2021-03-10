@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-    <param name="use_sim_time" value="true" />
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+<param name="use_sim_time" value="true" />
+   
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
 
     <rosparam file="$(find navigation)/nav_config/move_base_params.yaml" command="load" />
     <rosparam file="$(find navigation)/nav_config/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -19,11 +20,10 @@
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)"/>
 
     <include file="$(find navigation)/launch/amcl.launch">
-        <arg name="topic_scan" value="/pepper/laser_2" />
+        <arg name="scan_topic" value="/pepper/laser_2" />
     </include>
 
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find navigation)/rviz_config/nav.rviz" />
-
-<node pkg="rostopic" type="rostopic" name="arbitrary_name" args="pub -1 /pepper/Head_controller/command trajectory_msgs/JointTrajectory '{joint_names: [HeadPitch, HeadYaw], points:[{positions: [0.25, -0.0], time_from_start: [1.0, 0]}]}'" output="screen"/>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find navigation)/rviz_config/navigation.rviz">
+	</node>
 
 </launch>

@@ -64,8 +64,18 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 ![Order for the points](sequence_of_points.png)
 
 
+### Navigation
 
+The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 
+- `roslaunch navigation navigation.launch`
 
+This will open Rviz and you can give goal orders to the robot using the 2D nav goal tool.
+
+If you are using another environment you need to provide your map file (.yaml) as an argument:
+
+- `roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml`
+
+Then when you'll see Rviz window you will need to define the initial position of the robot using the 2D pose estimate tool.
 
 

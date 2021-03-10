@@ -33,3 +33,39 @@ Follow the steps to install this workspace:
 3. Build the workspace
 
 - `catkin_make && source devel/setup.bash`
+
+
+## Launch
+
+### Gazebo Simulation
+To launch the main environment for the RoboCup@Home 2021 execute the following command (remember that the workspace should be source):
+
+- `roslaunch simulation robocup_env.launch`
+
+Another test environment can be launch as follow:
+
+- `roslaunch simulation test_env.launch`
+
+### Mapping 
+To perform mapping in one of the environment do:
+
+- `roscd navigation`
+- `chmod +x ./mapping.sh && ./mapping.sh`
+
+You will be able to choose between 2 different mapping modes: the first one use a frontier-based autonomous exploration to map the environment and the second will launch a teleoperation tool for you to drive the robot around manually (using the keyboard).
+
+#### Frontier-based Exploration: [package rrt_exploration](http://wiki.ros.org/rrt_exploration)
+
+If you choose the option 1 for mapping you need to configure the frontier-based algorithm. First wait that all the windows (Rviz + 2 terminals) are launch and that you have "the map and global costmaps are received" message in the second terminal.
+Then, in the Rviz window, you can publish 5 different points (using publish point tool): the 4 first ones will be for the size of the map that you want. The last one is the first goal for the robot and should be in the already mapped area (in white area in Rviz) while the others can be anywhere else.
+
+!!! BE CAREFUL !!! You shouldd respect the following order for the points (left-top, left-bottom, right-bottom, right-top and goal) instead nothing will work:
+
+![Order for the points](sequence_of_points.png)
+
+
+
+
+
+
+

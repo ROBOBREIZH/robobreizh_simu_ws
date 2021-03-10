@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <!-- MACROS FOR DISABLE LINKS -->
 	<xacro:property name="PI" value="3.14159265359" />
-    <xacro:macro name="DisabledLinks" params="side side_small">
+    <!-- <xacro:macro name="DisabledLinks" params="side side_small">
         <plugin name="${side}Finger11_link" filename="libroboticsgroup_gazebo_disable_link_plugin.so">
             <link>${side}Finger11_link</link>
         </plugin>
@@ -48,10 +48,10 @@
         <plugin name="${side_small}_gripper" filename="libroboticsgroup_gazebo_disable_link_plugin.so">
             <link>${side_small}_gripper</link>
         </plugin>
-    </xacro:macro>  
+    </xacro:macro>  -->
     <!-- MACROS FOR MIMIC JOINTS -->
     <!-- Fingers -->
-     <xacro:macro name="FingerMimics" params="side num">
+ <!--    <xacro:macro name="FingerMimics" params="side num">
         <plugin name="mimic_${side}Finger${num}1" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
             <joint>${side}Hand</joint>
             <mimicJoint>${side}Finger${num}1</mimicJoint>
@@ -84,7 +84,7 @@
             <multiplier>-${PI/4}</multiplier>
             <offset>${PI/4}</offset>
         </plugin>
-    </xacro:macro>
+    </xacro:macro> -->
     <!-- GAZEBO ROS CONTROL -->
 
     <gazebo>
@@ -96,7 +96,7 @@
         </plugin>
 
 
-         <xacro:FingerMimics side="L" num="1"/>
+ <!--        <xacro:FingerMimics side="L" num="1"/>
         <xacro:FingerMimics side="L" num="2"/>
         <xacro:FingerMimics side="L" num="3"/>
         <xacro:FingerMimics side="L" num="4"/>
@@ -109,7 +109,7 @@
         <xacro:ThumbMimics side="R"/>
 
         <xacro:DisabledLinks side="L" side_small="l"/>
-        <xacro:DisabledLinks side="R" side_small="r"/> 
+        <xacro:DisabledLinks side="R" side_small="r"/>  -->
     </gazebo>
     <!-- END OF GAZEBO ROS CONTROL PLUGIN -->
     <!-- GAZEBO MATERIALS -->
@@ -223,7 +223,7 @@
         <turnGravityOff>true</turnGravityOff>
     </gazebo>
 
-     <gazebo reference="LFinger11_link">
+<!--     <gazebo reference="LFinger11_link">
         <mu1>0.5</mu1>
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
@@ -308,7 +308,7 @@
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
         <turnGravityOff>true</turnGravityOff>
-    </gazebo>  
+    </gazebo>  -->
 
     <gazebo reference="Hip">
         <mu1>0.5</mu1>

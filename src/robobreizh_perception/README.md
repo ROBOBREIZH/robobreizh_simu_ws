@@ -59,6 +59,19 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
+### 4. Configuration
+
+Before launching the package you need to configure your path to darknet (Mask-RCNN) and OpenPose. You can do it by editing the cfg.yaml file from src directory. If you follow the regular install the draknet and openpose path should be:
+
+ ```buildoutcfg
+libdarknet_path:
+  "HOME_path/darknet/libdarknet.so"
+
+openpose_path:
+  "HOME_path/openpose"
+```
+
+We recommand to also verify the paths in '''src/utils/conf.py''', they should all correspond to a downloaded data file. 
 
 ## Start the server
 

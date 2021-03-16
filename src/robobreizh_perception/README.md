@@ -71,7 +71,7 @@ openpose_path:
   "HOME_path/openpose"
 ```
 
-We recommand to also verify the paths in '''src/utils/conf.py''', they should all correspond to a downloaded data file. 
+We recommand to also verify the paths in `src/utils/conf.py`, they should all correspond to a downloaded data file. 
 
 ## Start the server
 

@@ -21,13 +21,17 @@ This package is currently only working on Ubuntu 16.04 and on computer with a NV
 ### 1. Install NVIDIA Driver (version 460)
 
 This NVIDIA driver is required for the CUDA version we use (CUDA 11.2). The driver 460 is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required driver at [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx?lang=en-us). Be careful if you are using a different driver that the 460 you should also check the compatibility with CUDA 11.2.
-Execute the script and follow instruction to install the NVIDIA Driver 460:
+Execute this script and follow instruction to install the NVIDIA Driver 460.
 
-``` install_nvidia_driver.sh ```
+```buildoutcfg
+install_nvidia_driver.sh 
+```
 
-Then you need to reboot your computer to finish installation:
+Then reboot your computer to finish installation.
 
-``` sudo reboot ```
+```buildoutcfg
+sudo reboot 
+```
 
 
 ### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN and YOLO)

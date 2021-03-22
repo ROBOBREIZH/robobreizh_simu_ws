@@ -97,7 +97,8 @@ The Perception package is build as a server and is not yet implemented with ROS.
 You should launch it in a seperate terminal as follow:
 
 ```buildoutcfg
-sudo python3 src/robobreizh_perception/src/start_server.py
+cd src/robobreizh_perception/src
+sudo python3 start_server.py
 ```
 
 After a few seconds, the different weights will be loaded and the server will be ready to take requests.

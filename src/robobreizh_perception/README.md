@@ -81,7 +81,8 @@ We recommand to also verify the paths in `src/utils/conf.py`, they should all co
 In order to start the server, open a terminal in the robobreizh_perception directory and type:
 
 ```buildoutcfg
-sudo python3 src/start_server.py
+cd src
+sudo python3 start_server.py
 ```
 
 After a few seconds, the different weights will be loaded and the server will be ready to take requests.

@@ -18,39 +18,32 @@ Chairs are further divided into two subgroups: taken and empty.
 
 This package is currently only working on Ubuntu 16.04 and on computer with a NVIDIA graphic card.
 
-### 1. CUDNN installation (needed for CUDA)
+### 1. Install NVIDIA Driver (version 460)
 
-1. Needs to be downloaded at: 
+This NVIDIA driver is required for the CUDA version we use (CUDA 11.2). The driver 460 is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required driver at [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx?lang=en-us). Be careful if you are using a different driver that the 460 you should also check the compatibility with CUDA 11.2.
+Execute the script and follow instruction to install the NVIDIA Driver 460:
 
-https://developer.nvidia.com/cudnn-download-survey
+``` install_nvidia_driver.sh ```
 
-2. Download the 3 CUDNN files (runtime, dev and samples) from Nvidia website (need to register a free acount) depending on your system.
+Then you need to reboot your computer to finish installation:
 
-3. Installation scripts look like:
+``` sudo reboot ```
 
-```buildoutcfg
-sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
-sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb
-sudo dpkg -i libcudnn7-samples_7.6.5.32-1+cuda10.2_amd64.deb
-sudo ldconfig
-```
 
-More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN and YOLO)
 
-### 2. OpenPose installation
-
-Install OpenPose using the following tutorial:
-
-[https://robinreni96.github.io/computervision/Python-Openpose-Installation/](https://robinreni96.github.io/computervision/Python-Openpose-Installation)
-
-### 3. Other Dependencies (CUDA, MaskRCNN and YOLO)
-
-Install dependencies with install_ubuntu16.sh or install_ubuntu18.sh dependencies on the OS.
+Install dependencies with install_ubuntu16.sh.
 
 ```buildoutcfg
 bash install_ubuntu16.sh
 ```
-The installation script include for CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.6 (Ubuntu 16 only) and python dependencies.
+
+The installation script include for CUDNN, CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+
+If you encountered problems with CUDNN or CUDA install you can foolow the official tutorials by NVIDIA:
+
+More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+More information on the [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 The dependencies can also be installed individually with:
 
@@ -59,7 +52,13 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
-### 4. Configuration
+### 3. OpenPose installation
+
+Install OpenPose using the following tutorial:
+
+[https://robinreni96.github.io/computervision/Python-Openpose-Installation/](https://robinreni96.github.io/computervision/Python-Openpose-Installation)
+
+### 5. Configuration
 
 Before launching the package you need to configure your path to darknet (Mask-RCNN) and OpenPose. You can do it by editing the cfg.yaml file from src directory. If you follow the regular install the draknet and openpose path should be:
 

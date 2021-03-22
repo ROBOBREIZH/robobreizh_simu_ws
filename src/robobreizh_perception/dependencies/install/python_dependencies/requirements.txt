@@ -5,6 +5,4 @@ pyyaml
 opencv-python
 scipy
 matplotlib
-#Depending on the computer, it maybe be necessary to also:
-#sudo apt install libopencv-dev
 

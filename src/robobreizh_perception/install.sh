@@ -33,6 +33,7 @@ sudo apt-get install python3.7 -y
 sudo apt-get install python3-pip -y
 sudo apt-get install libopencv-dev python3-opencv -y
 sudo python3.7 -m pip install -r python_dependencies/requirements.txt
+sudo python3.7 -m pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 
 
 #Download MaskRCNN

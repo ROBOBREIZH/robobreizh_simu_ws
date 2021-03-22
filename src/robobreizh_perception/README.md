@@ -35,7 +35,7 @@ Then you need to reboot your computer to finish installation:
 Install dependencies with install_ubuntu16.sh.
 
 ```buildoutcfg
-bash install_ubuntu16.sh
+bash install.sh
 ```
 
 The installation script include for CUDNN, CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.

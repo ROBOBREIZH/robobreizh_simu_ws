@@ -1,4 +1,4 @@
-# robobreizh_perception
+# RoboBreizh Perception Package
 
 ## Overview
 

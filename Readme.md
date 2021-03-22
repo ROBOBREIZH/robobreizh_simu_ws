@@ -45,7 +45,7 @@ Follow the steps to install this workspace:
 
 ### 2.2. Perception Package
 
-Follow the instruction in the [robobreizh_perception directory](src/robobreizh_perception/Readme.md).
+Follow the instruction in the [robobreizh_perception directory](src/robobreizh_perception/).
 
 ## 3. Usage
 

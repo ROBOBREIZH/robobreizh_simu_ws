@@ -1,3 +1,17 @@
+echo  "Which GPU do you have ? (type 1 or 2)"
+echo  "1. Nvidia RTX (Turing Architecture)"
+echo  "2. Nvidia GTX or TITAN (Pascal Architecture)"
+read Res
+
+if [ "$Res" = "1" ]; then
+	model="rtx"
+elif [ "$Res" = "2" ]; then
+	model="gtx"
+else 
+	echo "Invalid input, please try again"
+	exit 1
+fi
+
 #Install Cuda
 mkdir install/
 mkdir data/
@@ -37,7 +51,7 @@ sudo python3.7 -m pip install -r python_dependencies/requirements.txt
 sudo python3.7 -m pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 
 #Download MaskRCNN
-bash maskrcnn/install.sh
+bash maskrcnn/install.sh $model
 
 #Download YOLO
 bash yolo/install.sh

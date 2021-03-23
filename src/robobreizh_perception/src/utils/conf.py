@@ -14,17 +14,17 @@ print("CFG", CFG)
 
 SERVER_PORT = CFG["port_server"]
 libdarknet_path = CFG["libdarknet_path"]
-openpose_path = CFG["openpose_path"]
-openpose_version = CFG["openpose_version"]
+#openpose_path = CFG["openpose_path"]
+#openpose_version = CFG["openpose_version"]
 
 print("OPEN:", openpose_path)
 
-if openpose_version == "official":
-    from detection.openpose.openpose import OpenPose
-    OPENPOSE = OpenPose().getInstance()
-else:
-    from detection.openpose.torch.openpose_pytorch import OpenPosePytorch
-    OPENPOSE = OpenPosePytorch().getInstance()
+# if openpose_version == "official":
+#     from detection.openpose.openpose import OpenPose
+#     OPENPOSE = OpenPose().getInstance()
+# else:
+from detection.openpose.torch.openpose_pytorch import OpenPosePytorch
+OPENPOSE = OpenPosePytorch().getInstance()
 
 from detection.yolov3.yolov3 import YOLOV3
 YOLO = None

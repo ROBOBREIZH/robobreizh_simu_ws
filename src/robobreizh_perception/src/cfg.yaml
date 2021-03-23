@@ -25,8 +25,8 @@ openpose_version:
 #In openpose/build/python/:
 #There must be a file with the following naming pattern: pyopenpose.cpython-...-gnu.so
 
-openpose_path:
-  "/home/maelic/openpose"
+#openpose_path:
+ # "/home/maelic/openpose"
 
 #Regular YOLOV3 configuration
 #yolo_weights:

@@ -34,7 +34,7 @@ sudo reboot
 ```
 
 
-### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN and YOLO)
+### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
 
 Install dependencies with install_ubuntu16.sh.
 
@@ -56,13 +56,7 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
-### 3. OpenPose installation
-
-Install OpenPose using the following tutorial:
-
-[https://robinreni96.github.io/computervision/Python-Openpose-Installation/](https://robinreni96.github.io/computervision/Python-Openpose-Installation)
-
-### 5. Configuration
+### 3. Configuration
 
 Before launching the package you need to configure your path to darknet (Mask-RCNN) and OpenPose. You can do it by editing the cfg.yaml file from src directory. If you follow the regular install the draknet and openpose path should be:
 

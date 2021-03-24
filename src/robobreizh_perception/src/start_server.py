@@ -59,7 +59,7 @@ class ServerProtocol:
 						result["taken_chairs"] = (self.detector.detect_chairs(img))
 						objects.remove("all_chairs")
 					if "waving_hand" in objects:
-						result["waving_hand"] = (self.detector.detect_chairs(img))
+						result["waving_hand"] = (self.detector.detect_waving_hands(img))
 						objects.remove("waving_hand")
 					if objects:
 						r = self.detector.detect_objects(img, objects)

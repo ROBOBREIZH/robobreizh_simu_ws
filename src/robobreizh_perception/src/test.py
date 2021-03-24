@@ -18,7 +18,6 @@ def image_request(sock, img_file, obj):
 		img = file.read()
 	
 	encoding = {'image': base64.encodebytes(img).decode('utf-8'), 'objects': obj}
-	
 
 	res_bytes = json.dumps(encoding).encode('utf-8')
 
@@ -55,6 +54,12 @@ if __name__ == '__main__':
 	obj = ["all"]
 
 	image_request(sock, img_file, obj)
+	sock.close()
+	
+	time.sleep(2)
+
+	sock = socket(AF_INET, SOCK_STREAM)
+	sock.connect((hote, port))
 
 	img_file = "test/waving-hand.jpg"
 	obj = ["waving_hand"]

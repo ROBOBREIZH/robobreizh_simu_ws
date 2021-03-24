@@ -154,7 +154,7 @@ After a few seconds, the different weights will be loaded and the server will be
 Once the server has started, open a second a terminal and enter:
 
 ```buildoutcfg
-python3.7 src/test.py
+python3.7 test.py
 ```
 
 This will send an image (file table.png) to the server. 

@@ -1,28 +1,9 @@
 import yaml
 import cv2
+import os
 
-CFG_PATH = "cfg.yaml"
+libdarknet_path = os.environ['HOME']+"/darknet/libdarknet.so"
 
-def read_yaml(path_to_config):
-    with open(path_to_config, 'r') as stream:
-        data_loaded = yaml.safe_load(stream)
-        return data_loaded
-
-
-CFG = read_yaml(CFG_PATH)
-print("CFG", CFG)
-
-SERVER_PORT = CFG["port_server"]
-libdarknet_path = CFG["libdarknet_path"]
-#openpose_path = CFG["openpose_path"]
-#openpose_version = CFG["openpose_version"]
-
-#print("OPEN:", openpose_path)
-
-# if openpose_version == "official":
-#     from detection.openpose.openpose import OpenPose
-#     OPENPOSE = OpenPose().getInstance()
-# else:
 from detection.openpose.openpose_pytorch import OpenPosePytorch
 OPENPOSE = OpenPosePytorch().getInstance()
 

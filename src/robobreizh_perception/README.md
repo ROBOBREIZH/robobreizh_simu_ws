@@ -56,17 +56,6 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
-### 3. Configuration
-
-Before launching the package you need to configure your path to darknet (Mask-RCNN). You can do it by editing the cfg.yaml file from src directory `gedit src/cfg.yaml`. If you follow the regular install the draknet path should be:
-
- ```buildoutcfg
-libdarknet_path:
-  "HOME_path/darknet/libdarknet.so"
-```
-
-We recommand to also verify the paths in `src/utils/conf.py`, they should all correspond to a downloaded data file. 
-
 ## Start the server
 
 You should launch it in a seperate terminal as follow:

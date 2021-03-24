@@ -97,18 +97,19 @@ We recommand to also verify the paths in `src/utils/conf.py`, they should all co
 
 ## 3. Usage
 
-### 3.1. Gazebo Simulation
-To launch the main environment for the RoboCup@Home 2021 execute the following command (remember that the workspace should be source):
+### 3.1. Start the Gazebo Simulation
+To launch the main environment for the RoboCup@Home 2021 execute the following command:
 
-- `roslaunch simulation robocup_env.launch`
+- `source devel/setup.bash && roslaunch simulation robocup_env.launch`
 
 Another test environment can be launch as follow:
 
 - `roslaunch simulation test_env.launch`
 
 ### 3.2. Mapping 
-To perform mapping in one of the environment do:
+To perform mapping in one of the environment do (you should have the simulation running beforehand):
 
+- `source devel/setup.bash` 
 - `roscd navigation`
 - `chmod +x ./mapping.sh && ./mapping.sh`
 
@@ -128,6 +129,7 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 
 The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 
+- `source devel/setup.bash`
 - `roslaunch navigation navigation.launch`
 
 This will open Rviz and you can give goal orders to the robot using the 2D nav goal tool.
@@ -157,8 +159,8 @@ Once the server has started, open a second a terminal and enter:
 python3.7 test.py
 ```
 
-This will send an image (file table.png) to the server. 
+This will send two images (file table.png and waving-hand.jpg) to the server. 
 
-The predictions will appear in the terminal and the image will be saved at robobreizh_perception/src/data/demo.png.
+The predictions will appear in the terminal and images will be saved at robobreizh_perception/src/demo.
 
 For more information or debug please check the [Perception Package directory](src/robobreizh_perception/Readme.md#start-the-server)

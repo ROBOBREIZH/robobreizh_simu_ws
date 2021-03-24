@@ -13,8 +13,9 @@ bash ./install.sh
 To perfrom mapping and navigation we assume that you already successfuly launch one simulated environment (with Gazebo).
 
 ### 2.1. Mapping 
-To perform mapping in a simulated environment do:
+To perform mapping in one of the environment do (you should have the simulation running beforehand):
 
+- `source devel/setup.bash` 
 - `roscd navigation`
 - `chmod +x ./mapping.sh && ./mapping.sh`
 
@@ -34,6 +35,7 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 
 The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 
+- `source devel/setup.bash`
 - `roslaunch navigation navigation.launch`
 
 This will open Rviz and you can give goal orders to the robot using the 2D nav goal tool.

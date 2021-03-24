@@ -69,16 +69,14 @@ We recommand to also verify the paths in `src/utils/conf.py`, they should all co
 
 ## Start the server
 
-In order to start the server, open a terminal in the robobreizh_perception directory and type:
+You should launch it in a seperate terminal as follow:
 
 ```buildoutcfg
-cd src
+cd src/robobreizh_perception/src
 sudo python3.7 start_server.py
 ```
 
 After a few seconds, the different weights will be loaded and the server will be ready to take requests.
-
-## Test
 
 Once the server has started, open a second a terminal and enter:
 
@@ -86,9 +84,9 @@ Once the server has started, open a second a terminal and enter:
 python3.7 test.py
 ```
 
-This will send an image to the server. 
+This will send two images (file table.png and waving-hand.jpg) to the server. 
 
-The predictions will appear in the terminal and the image will be saved at data/demo.png.
+The predictions will appear in the terminal and images will be saved at robobreizh_perception/src/demo.
 
 ## Structure
 

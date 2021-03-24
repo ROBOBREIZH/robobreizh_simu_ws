@@ -1,4 +1,4 @@
-from detection.openpose.torch.utils.body import Body
+from detection.openpose.src.body import Body
 
 import cv2
 

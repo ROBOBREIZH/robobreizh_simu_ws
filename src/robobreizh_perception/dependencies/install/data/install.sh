@@ -22,7 +22,6 @@ wget https://www.dropbox.com/sh/7xbup2qsn7vvjxo/AAC2TIWnbvaHf-MfQPxT4pf3a/hand_p
 #Download weights for clothes detection:
 #Source: https://drive.google.com/drive/folders/1b7laIv9-oeh59XSV6aOO50eMKbTGsPoP
 #Wget from google drive: https://silicondales.com/tutorials/g-suite/how-to-wget-files-from-google-drive/
-mkdir ../yolo/clothes
 cd ../yolo/clothes
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=100wCUH7qu7DfgVkMpSCPRy7so2yXeY23' -O df2.names
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=10aXSD_odnugZAw6tGRTqpTio3tOOgVNa' -O yolov3-df2.cfg

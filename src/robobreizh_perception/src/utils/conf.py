@@ -23,7 +23,7 @@ libdarknet_path = CFG["libdarknet_path"]
 #     from detection.openpose.openpose import OpenPose
 #     OPENPOSE = OpenPose().getInstance()
 # else:
-from detection.openpose.torch.openpose_pytorch import OpenPosePytorch
+from detection.openpose.openpose_pytorch import OpenPosePytorch
 OPENPOSE = OpenPosePytorch().getInstance()
 
 from detection.yolov3.yolov3 import YOLOV3

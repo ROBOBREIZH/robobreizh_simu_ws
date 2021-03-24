@@ -54,6 +54,7 @@ class DetectRobocup:
         print('Openpose detection. (%.3fs)' % (time.time() - t))
         if self.displayPose: OPENPOSE.draw(image, poses)
         arr_hands = self.has_raising_hands(image, poses)
+        cv2.imwrite('demo/demo_waving_hand.png', image)
 
         return arr_hands
 
@@ -102,6 +103,8 @@ class DetectRobocup:
             res[obj] = maskrcnn.get_masks(out, [self.class_names.index(obj)])
 
         print('Objects/Person detection. (%.3fs)' % (time.time() - t))
+        cv2.imwrite('demo/objects.png', img)
+
         return res
 
     def detect_features(self, image):

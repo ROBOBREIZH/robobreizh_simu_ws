@@ -45,7 +45,55 @@ Follow the steps to install this workspace:
 
 ### 2.2. Perception Package
 
-Follow the instruction in the [robobreizh_perception directory](src/robobreizh_perception/).
+#### 2.2.1. Install NVIDIA Driver (version 460)
+
+This NVIDIA driver is required for the CUDA version we use (CUDA 11.2). The driver 460 is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required driver at [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx?lang=en-us). Be careful if you are using a different driver that the 460 you should also check the compatibility with CUDA 11.2.
+Execute this script and follow instruction to install the NVIDIA Driver 460.
+
+```buildoutcfg
+cd src/robobreizh_perception
+bash install_nvidia_driver.sh 
+```
+
+Then reboot your computer to finish installation.
+
+```buildoutcfg
+sudo reboot 
+```
+
+#### 2.2.2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
+
+Install dependencies with install_ubuntu16.sh.
+
+```buildoutcfg
+cd src/robobreizh_perception
+bash install.sh
+```
+
+The installation script include for CUDNN, CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+
+If you encountered problems with CUDNN or CUDA install you can foolow the official tutorials by NVIDIA:
+
+More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+More information on the [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+
+The dependencies can also be installed individually with:
+
+```buildoutcfg
+cd dependencies/install/{NAME_OF_DEPENDENCY}
+bash install.sh
+```
+
+#### 2.2.3. Configuration
+
+Before launching the package you need to configure your path to darknet (Mask-RCNN). You can do it by editing the cfg.yaml file from src directory `gedit src/cfg.yaml`. If you follow the regular install the draknet path should be:
+
+ ```buildoutcfg
+libdarknet_path:
+  "HOME_path/darknet/libdarknet.so"
+```
+
+We recommand to also verify the paths in `src/utils/conf.py`, they should all correspond to a downloaded data file.
 
 ## 3. Usage
 
@@ -98,9 +146,19 @@ You should launch it in a seperate terminal as follow:
 
 ```buildoutcfg
 cd src/robobreizh_perception/src
-sudo python3 start_server.py
+sudo python3.7 start_server.py
 ```
 
 After a few seconds, the different weights will be loaded and the server will be ready to take requests.
+
+Once the server has started, open a second a terminal and enter:
+
+```buildoutcfg
+python3.7 src/test.py
+```
+
+This will send an image (file table.png) to the server. 
+
+The predictions will appear in the terminal and the image will be saved at robobreizh_perception/src/data/demo.png.
 
 For more information or debug please check the [Perception Package directory](src/robobreizh_perception/Readme.md#start-the-server)

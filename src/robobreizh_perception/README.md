@@ -58,7 +58,7 @@ bash install.sh
 
 ### 3. Configuration
 
-Before launching the package you need to configure your path to darknet (Mask-RCNN). You can do it by editing the cfg.yaml file from src directory. If you follow the regular install the draknet path should be:
+Before launching the package you need to configure your path to darknet (Mask-RCNN). You can do it by editing the cfg.yaml file from src directory `gedit src/cfg.yaml`. If you follow the regular install the draknet path should be:
 
  ```buildoutcfg
 libdarknet_path:
@@ -73,7 +73,7 @@ In order to start the server, open a terminal in the robobreizh_perception direc
 
 ```buildoutcfg
 cd src
-sudo python3 start_server.py
+sudo python3.7 start_server.py
 ```
 
 After a few seconds, the different weights will be loaded and the server will be ready to take requests.
@@ -83,7 +83,7 @@ After a few seconds, the different weights will be loaded and the server will be
 Once the server has started, open a second a terminal and enter:
 
 ```buildoutcfg
-python3 src/test.py
+python3.7 src/test.py
 ```
 
 This will send an image to the server. 
@@ -109,7 +109,7 @@ The weights may not have been downloaded.
 
 ```buildoutcfg
 cd dependencies/install/data
-bash install
+bash install.sh
 ```
 
 If it hasn't worked, check whether the weights were correctly downloaded in data.

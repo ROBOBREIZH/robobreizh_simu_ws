@@ -8,8 +8,8 @@ import matplotlib
 import torch
 from torchvision import transforms
 
-from detection.openpose.torch.src import util
-from detection.openpose.torch.src.model import bodypose_model
+from detection.openpose.src import util
+from detection.openpose.src.model import bodypose_model
 
 class Body(object):
     def __init__(self, model_path):

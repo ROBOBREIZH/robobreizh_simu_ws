@@ -31,17 +31,22 @@ To use this repository we assume that you have a working install of ROS Kinetic.
 Follow the steps to install this workspace:
 1. Clone the repository 
 
-- `git clone https://github.com/ROBOBREIZH/robobreizh_simu_ws.git`
+```buildoutcfg
+git clone https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
+```
 
 2. Install the dependencies
 
-- `cd robobreizh_simu_ws`
-
-- `chmod +x ./install.sh && ./install.sh`
+```buildoutcfg
+cd robobreizh_simu_ws
+chmod +x ./install.sh && ./install.sh
+```
 
 3. Build the workspace
 
-- `catkin_make && source devel/setup.bash`
+```buildoutcfg
+catkin_make && source devel/setup.bash
+```
 
 ### 2.2. Perception Package
 
@@ -100,18 +105,24 @@ We recommand to also verify the paths in `src/utils/conf.py`, they should all co
 ### 3.1. Start the Gazebo Simulation
 To launch the main environment for the RoboCup@Home 2021 execute the following command:
 
-- `source devel/setup.bash && roslaunch simulation robocup_env.launch`
+```buildoutcfg
+source devel/setup.bash && roslaunch simulation robocup_env.launch
+```
 
 Another test environment can be launch as follow:
 
-- `roslaunch simulation test_env.launch`
+```buildoutcfg
+roslaunch simulation test_env.launch
+```
 
 ### 3.2. Mapping 
 To perform mapping in one of the environment do (you should have the simulation running beforehand):
 
-- `source devel/setup.bash` 
-- `roscd navigation`
-- `chmod +x ./mapping.sh && ./mapping.sh`
+```buildoutcfg
+source devel/setup.bash
+roscd navigation
+chmod +x ./mapping.sh && ./mapping.sh
+```
 
 You will be able to choose between 2 different mapping modes: the first one use a frontier-based autonomous exploration to map the environment and the second will launch a teleoperation tool for you to drive the robot around manually (using the keyboard).
 
@@ -129,14 +140,18 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 
 The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 
-- `source devel/setup.bash`
-- `roslaunch navigation navigation.launch`
+```buildoutcfg
+source devel/setup.bash
+roslaunch navigation navigation.launch
+```
 
 This will open Rviz and you can give goal orders to the robot using the 2D nav goal tool.
 
 If you are using another environment you need to provide your map file (.yaml) as an argument:
 
-- `roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml`
+```buildoutcfg
+roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml
+```
 
 Then when you'll see Rviz window you will need to define the initial position of the robot using the 2D pose estimate tool.
 

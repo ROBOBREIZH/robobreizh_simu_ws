@@ -15,9 +15,11 @@ To perfrom mapping and navigation we assume that you already successfuly launch 
 ### 2.1. Mapping 
 To perform mapping in one of the environment do (you should have the simulation running beforehand):
 
-- `source devel/setup.bash` 
-- `roscd navigation`
-- `chmod +x ./mapping.sh && ./mapping.sh`
+```buildoutcfg
+source devel/setup.bash
+roscd navigation
+chmod +x ./mapping.sh && ./mapping.sh
+```
 
 You will be able to choose between 2 different mapping modes: the first one use a frontier-based autonomous exploration to map the environment and the second will launch a teleoperation tool for you to drive the robot around manually (using the keyboard).
 
@@ -35,14 +37,18 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 
 The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 
-- `source devel/setup.bash`
-- `roslaunch navigation navigation.launch`
+```buildoutcfg
+source devel/setup.bash
+roslaunch navigation navigation.launch
+```
 
 This will open Rviz and you can give goal orders to the robot using the 2D nav goal tool.
 
 If you are using another environment you need to provide your map file (.yaml) as an argument:
 
-- `roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml`
+```buildoutcfg
+roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml
+```
 
 Then when you'll see Rviz window you will need to define the initial position of the robot using the 2D pose estimate tool.
 

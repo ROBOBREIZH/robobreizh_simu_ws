@@ -17,7 +17,7 @@ libdarknet_path = CFG["libdarknet_path"]
 #openpose_path = CFG["openpose_path"]
 #openpose_version = CFG["openpose_version"]
 
-print("OPEN:", openpose_path)
+#print("OPEN:", openpose_path)
 
 # if openpose_version == "official":
 #     from detection.openpose.openpose import OpenPose

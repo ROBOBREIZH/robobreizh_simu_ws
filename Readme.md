@@ -63,7 +63,7 @@ sudo reboot
 
 #### 2.2.2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
 
-Install dependencies with install_ubuntu16.sh.
+Install dependencies with install.sh.
 
 ```buildoutcfg
 cd src/robobreizh_perception

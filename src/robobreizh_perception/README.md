@@ -36,7 +36,7 @@ sudo reboot
 
 ### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
 
-Install dependencies with install_ubuntu16.sh.
+Install dependencies with install.sh.
 
 ```buildoutcfg
 bash install.sh

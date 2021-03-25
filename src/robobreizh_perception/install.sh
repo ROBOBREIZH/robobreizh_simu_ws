@@ -40,7 +40,6 @@ cp -r /usr/src/cudnn_samples_v8/ .
 cd  ./cudnn_samples_v8/mnistCUDNN
 make clean && make
 ./mnistCUDNN | grep "Test passed!"
-cd ../..
 if [ $? = 0 ]; then 
        echo -e "\n \e[42mCUDNN 8.1 already installed, skipping ... \e[0m \n"; 
 else

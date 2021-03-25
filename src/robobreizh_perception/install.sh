@@ -40,9 +40,11 @@ cp -r /usr/src/cudnn_samples_v8/ .
 cd  ./cudnn_samples_v8/mnistCUDNN
 make clean && make
 ./mnistCUDNN | grep "Test passed!"
-if [ $? = 0 ]; then 
+if [ $? = 0 ]; then
+       cd ../.. 
        echo -e "\n \e[42mCUDNN 8.1 already installed, skipping ... \e[0m \n"; 
 else
+       cd ../.. 
        gdown https://drive.google.com/uc?id=145G84LZnHNi6QsCGX_7OAKrunSoKoKIa
        gdown https://drive.google.com/uc?id=1QjexX5lXDN4Qjf8hOfbB0iV1pjC0Yp9j
        sudo dpkg -i libcudnn8_8.1.1.33-1+cuda11.2_amd64.deb

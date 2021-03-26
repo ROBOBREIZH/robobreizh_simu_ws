@@ -47,45 +47,62 @@ class DetectRobocup:
         else:
             return self.detect_image(arr)
 
-    def detect_waving_hands(self, image):
+    def detect_waving_hands(self, image, saveImage=False):
         t = time.time()
 
         poses = OPENPOSE.predict(image)
         print('Openpose detection. (%.3fs)' % (time.time() - t))
         if self.displayPose: OPENPOSE.draw(image, poses)
         arr_hands = self.has_raising_hands(image, poses)
-        cv2.imwrite('demo/demo_waving_hand.png', image)
+        if saveImage:
+            return arr_hands, image
+        #cv2.imwrite('demo/demo_waving_hand.png', image)
+        else:
+            return arr_hands
 
-        return arr_hands
-
-    def detect_empty_chairs(self, image):
+    def detect_empty_chairs(self, image, saveImage=False):
         t = time.time()
 
         out, image = maskrcnn.mask_rcnn(image)
         empty_chairs, taken_chairs = self.chairs_prediction(out)
         print('Empty chairs detection. (%.3fs)' % (time.time() - t))
+        if saveImage:
+            arr_persons = maskrcnn.get_boxes(out, [0])
+            arr_chairs = maskrcnn.get_masks(out, [56])
+            self.chairs_maskrcnn_prediction(image, arr_persons, arr_chairs)
+            return empty_chairs, image
+        else:
+            return empty_chairs
 
-        return empty_chairs
-
-    def detect_taken_chairs(self, image):
+    def detect_taken_chairs(self, image, saveImage=False):
         t = time.time()
 
         out, image = maskrcnn.mask_rcnn(image)
         empty_chairs, taken_chairs = self.chairs_prediction(out)
         print('Taken chairs detection. (%.3fs)' % (time.time() - t))
+        if saveImage:
+            arr_persons = maskrcnn.get_boxes(out, [0])
+            arr_chairs = maskrcnn.get_masks(out, [56])
+            self.chairs_maskrcnn_prediction(image, arr_persons, arr_chairs)
+            return taken_chairs, image
+        else:
+            return taken_chairs
 
-        return taken_chairs
-
-    def detect_chairs(self, image):        
+    def detect_chairs(self, image, saveImage=False):        
         t = time.time()
 
         out, image = maskrcnn.mask_rcnn(image)
         empty_chairs, taken_chairs = self.chairs_prediction(out)
         print('Chairs (Empty/Taken) detection. (%.3fs)' % (time.time() - t))
+        if saveImage:
+            arr_persons = maskrcnn.get_boxes(out, [0])
+            arr_chairs = maskrcnn.get_masks(out, [56])
+            self.chairs_maskrcnn_prediction(image, arr_persons, arr_chairs)
+            return empty_chairs, taken_chairs, image
+        else:
+            return empty_chairs, taken_chairs
 
-        return empty_chairs, taken_chairs
-
-    def detect_objects(self, image, objects_list):
+    def detect_objects(self, image, objects_list, saveImage=False):
         t = time.time()
 
         res = {}
@@ -103,9 +120,12 @@ class DetectRobocup:
             res[obj] = maskrcnn.get_masks(out, [self.class_names.index(obj)])
 
         print('Objects/Person detection. (%.3fs)' % (time.time() - t))
-        cv2.imwrite('demo/objects.png', img)
-
-        return res
+        
+        cv2.imwrite('demo/demo.png', img)
+        if saveImage:
+            return res, img
+        else:
+            return res
 
     def detect_features(self, image):
         t = time.time()
@@ -227,7 +247,7 @@ class DetectRobocup:
                                 chair_is_empty = False
                                 self.plot_one_box((i, j, i, j), image, color=[196, 196, 0], label="Chair is taken")
             if chair_is_empty:
-                    self.plot_one_box((i_start, j_start, i_start, j_start), image, color=[0, 112, 225], label="Chair is empty")
+                self.plot_one_box((i_start, j_start, i_start, j_start), image, color=[0, 112, 225], label="Chair is empty")
             chair_is_empty = True
             chair_found_start = False
 

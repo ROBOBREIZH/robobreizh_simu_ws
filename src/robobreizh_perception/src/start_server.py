@@ -10,8 +10,9 @@ import json
 from detect import DetectRobocup
 from utils.img_conversion import base64_to_cv2
 
-
+from json import JSONEncoder
 from struct import unpack, pack
+import numpy
 
 
 class ServerProtocol:
@@ -39,7 +40,7 @@ class ServerProtocol:
 					data = b''
 					while len(data) < length:
 						# doing it in batches is generally better than trying
-						# to do it all in one go, so I believe.
+						# to do it all in one go
 						to_read = length - len(data)
 						data += connection.recv(
 							4096 if to_read > 4096 else to_read)
@@ -47,26 +48,52 @@ class ServerProtocol:
 					response = json.loads(data.decode('utf-8'))
 					img = base64_to_cv2(response['image'])
 					objects = response['objects']
+					saveImage = response['saveImage']
 
 					result = {}
-					if "empty_chairs" in objects:
-						result["empty_chairs"] = (self.detector.detect_empyt_chairs(img))
-						objects.remove("empty_chairs")
-					if "taken_chairs" in objects:
-						result["taken_chairs"] = (self.detector.detect_taken_chairs(img))
-						objects.remove("taken_chairs")
-					if "all_chairs" in objects:
-						result["taken_chairs"] = (self.detector.detect_chairs(img))
-						objects.remove("all_chairs")
-					if "waving_hand" in objects:
-						result["waving_hand"] = (self.detector.detect_waving_hands(img))
-						objects.remove("waving_hand")
-					if objects:
-						r = self.detector.detect_objects(img, objects)
-						result.update(r)
 
-					res_bytes = json.dumps(result).encode('utf-8') 
+					if saveImage:
+						if "empty_chairs" in objects:
+							result["empty_chairs"], result["image_chairs"] = (self.detector.detect_empyt_chairs(img, saveImage))
+							objects.remove("empty_chairs")
+						if "taken_chairs" in objects:
+							result["taken_chairs"], result["image_chairs"] = (self.detector.detect_taken_chairs(img, saveImage))
+							objects.remove("taken_chairs")
+						if "all_chairs" in objects:
+							result["taken_chairs"], result["empty_chairs"], result["image_chairs"] = (self.detector.detect_chairs(img, saveImage))
+							objects.remove("all_chairs")
+						if "waving_hand" in objects:
+							result["waving_hand"], result["image_waving"] = (self.detector.detect_waving_hands(img, saveImage))
+							objects.remove("waving_hand")
+						if objects:
+							r, result["image_object"] = self.detector.detect_objects(img, objects, saveImage)
+							result.update(r)
+					else:
+						if "empty_chairs" in objects:
+							result["empty_chairs"] = (self.detector.detect_empyt_chairs(img))
+							objects.remove("empty_chairs")
+						if "taken_chairs" in objects:
+							result["taken_chairs"] = (self.detector.detect_taken_chairs(img))
+							objects.remove("taken_chairs")
+						if "all_chairs" in objects:
+							result["taken_chairs"], result["empty_chairs"] = (self.detector.detect_chairs(img))
+							objects.remove("all_chairs")
+						if "waving_hand" in objects:
+							result["waving_hand"] = (self.detector.detect_waving_hands(img))
+							objects.remove("waving_hand")
+						if objects:
+							r = self.detector.detect_objects(img, objects)
+							result.update(r)
+
+					class NumpyArrayEncoder(JSONEncoder):
+					    def default(self, obj):
+					        if isinstance(obj, numpy.ndarray):
+					            return obj.tolist()
+					        return JSONEncoder.default(self, obj)
+
+					res_bytes = json.dumps(result, cls=NumpyArrayEncoder).encode('utf-8') 
 					print("Image analyzed, sending back masks")
+
 					length = pack('>Q', len(res_bytes))
 
 					connection.sendall(length)
@@ -86,60 +113,8 @@ class ServerProtocol:
 		self.socket.close()
 		self.socket = None
 
-		# could handle a bad ack here, but we'll assume it's fine.
-
 if __name__ == '__main__':
 	sp = ServerProtocol()
 	sp.listen('127.0.0.1', 55555)
 	print("Listening")
 	sp.handle_images()
-
-
-# if __name__ == '__main__':
-# 	parser = argparse.ArgumentParser()
-# 	parser.add_argument("--ip", help="scoket ip to bind")
-# 	args = parser.parse_args()
-# 	socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 	if args.ip:
-# 		socket.bind((args.ip, 9986))
-# 	else:
-# 		socket.bind(('127.0.0.1', 9986))
-
-# 	detector = DetectRobocup()
-
-# 	while True:
-# 		print("Listening")
-# 		socket.listen(1)
-# 		client, address = socket.accept()
-# 		print("{} connected".format(address))
-
-# 		response = client.recv(999999)
-		
-# 		'''Format du message:
-# 		dic("image", "list required detected objects")
-# 		'''
-# 		response = json.loads(response.decode('utf-8'))
-# 		img = base64_to_cv2(response['image'])
-# 		objects = response['objects']
-
-# 		result = {}
-# 		if "empty_chairs" in objects:
-# 			result["empty_chairs"] = (detector.detect_empyt_chairs(img))
-# 			objects.remove("empty_chairs")
-# 		if "taken_chairs" in objects:
-# 			result["taken_chairs"] = (detector.detect_taken_chairs(img))
-# 			objects.remove("taken_chairs")
-# 		if "all_chairs" in objects:
-# 			result["taken_chairs"] = (detector.detect_chairs(img))
-# 			objects.remove("all_chairs")
-
-# 		if objects:
-# 			r = detector.detect_objects(img, objects)
-# 			result.update(r)
-# 		res_bytes = json.dumps(result).encode('utf-8') 
-# 		print(res_bytes)
-# 		client.send(res_bytes)
-
-# 	print("Close")
-# 	client.close()
-# 	socket.close()

@@ -50,14 +50,37 @@ catkin_make && source devel/setup.bash
 
 ### 2.2. Perception Package
 
-#### 2.2.1. Install NVIDIA Driver (version 460)
 
-This NVIDIA driver is required for the CUDA version we use (CUDA 11.2). The driver 460 is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required driver at [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx?lang=en-us). Be careful if you are using a different driver that the 460 you should also check the compatibility with CUDA 11.2.
-Execute this script and follow instruction to install the NVIDIA Driver 460.
+
+### 2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
+
+Install dependencies with install.sh.
+
+```buildoutcfg
+bash install.sh
+```
+
+The installation script include for CUDNN, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+
+If you encountered problems with CUDNN install you can folow the official tutorials by NVIDIA:
+
+More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+
+The dependencies can also be installed individually with:
+
+```buildoutcfg
+cd dependencies/install/{NAME_OF_DEPENDENCY}
+bash install.sh
+```
+
+#### 2.2.1. Install NVIDIA Cuda 11.2
+
+This installation of Cuda is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required version at [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)..
+Execute this script and follow instruction to install the NVIDIA Driver 11.2.
 
 ```buildoutcfg
 cd src/robobreizh_perception
-bash install_nvidia_driver.sh 
+bash install_cuda.sh 
 ```
 
 Then reboot your computer to finish installation.
@@ -66,7 +89,7 @@ Then reboot your computer to finish installation.
 sudo reboot 
 ```
 
-#### 2.2.2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
+#### 2.2.2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
 
 Install dependencies with install.sh.
 
@@ -75,14 +98,13 @@ cd src/robobreizh_perception
 bash install.sh
 ```
 
-The installation script include for CUDNN, CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+The installation script include for CUDNN, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
 
-If you encountered problems with CUDNN or CUDA install you can foolow the official tutorials by NVIDIA:
+If you encountered problems with CUDNN install you can folow the official tutorials by NVIDIA:
 
 More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
-More information on the [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-The dependencies can also be installed individually with:
+[OPTIONAL] The dependencies can also be installed individually with:
 
 ```buildoutcfg
 cd dependencies/install/{NAME_OF_DEPENDENCY}

@@ -48,7 +48,7 @@ If you encountered problems with CUDNN install you can folow the official tutori
 
 More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
 
-The dependencies can also be installed individually with:
+[OPTIONAL] The dependencies can also be installed individually with:
 
 ```buildoutcfg
 cd dependencies/install/{NAME_OF_DEPENDENCY}

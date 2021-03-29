@@ -32,6 +32,7 @@ Follow the steps to install this workspace:
 1. Clone the repository 
 
 ```buildoutcfg
+sudo apt-get install git
 git clone https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
 ```
 
@@ -49,29 +50,6 @@ catkin_make && source devel/setup.bash
 ```
 
 ### 2.2. Perception Package
-
-
-
-### 2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
-
-Install dependencies with install.sh.
-
-```buildoutcfg
-bash install.sh
-```
-
-The installation script include for CUDNN, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
-
-If you encountered problems with CUDNN install you can folow the official tutorials by NVIDIA:
-
-More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
-
-The dependencies can also be installed individually with:
-
-```buildoutcfg
-cd dependencies/install/{NAME_OF_DEPENDENCY}
-bash install.sh
-```
 
 #### 2.2.1. Install NVIDIA Cuda 11.2
 
@@ -98,7 +76,7 @@ cd src/robobreizh_perception
 bash install.sh
 ```
 
-The installation script include for CUDNN, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+The installation script include for CUDNN, mask-RCNN, YOLOv3 (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
 
 If you encountered problems with CUDNN install you can folow the official tutorials by NVIDIA:
 

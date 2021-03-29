@@ -13,26 +13,32 @@ else
 fi
 
 mkdir -p install/ && cd install/
+sudo apt-get install python-pip
 pip install gdown
 
 ################################################
 ###      Install CUDA if not existing        ###
 ################################################
-vss=$(nvidia-smi | grep "CUDA Version: 11.2")
-if [ "$vss" != "" ]; then 
-       echo -e "\n \e[42mCuda 11.2 already installed, skipping ... \e[0m \n"; 
-else 
-       wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
-       sudo sh cuda_11.2.2_460.32.03_linux.run
-       echo "export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}" >> ~/.bashrc
-       echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> ~/.bashrc
-       source ~/.bashrc
+if type "nvidia-smi" > /dev/null; then
+	echo -e "\n \e[43m Nvidia-smi installed, check Cuda version ... \e[0m \n"; 
+	vss=$(nvidia-smi | grep "CUDA Version: 11.2")
+	if [ "$vss" != "" ]; then 
+	       echo -e "\n \e[42m Cuda 11.2 already installed, skipping \e[0m \n"; 
+	else 
+	       echo -e "\n \e[43m Installing Nvidia Cuda 11.2 Toolkit ... \e[0m \n"; 
+	       wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
+	       sudo sh cuda_11.2.2_460.32.03_linux.run
+	       echo "export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}" >> ~/.bashrc
+	       echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> ~/.bashrc
+	       source ~/.bashrc
+	fi
 fi
 
 
 ################################################
 ###      Install CUDNN if not existing       ###
 ################################################
+echo -e "\n \e[43m Check CUDNN version ... \e[0m \n"; 
 gdown https://drive.google.com/uc?id=1mQuzRPWnNKnRtsQDoAw7X8X15GMOfd9o
 sudo dpkg -i libcudnn8-samples_8.1.1.33-1+cuda11.2_amd64.deb
 sudo ldconfig
@@ -42,14 +48,16 @@ make clean && make
 ./mnistCUDNN | grep "Test passed!"
 if [ $? = 0 ]; then
        cd ../.. 
-       echo -e "\n \e[42mCUDNN 8.1 already installed, skipping ... \e[0m \n"; 
+       echo -e "\n \e[42m CUDNN 8.1 already installed, skipping ... \e[0m \n"; 
 else
        cd ../.. 
+       echo -e "\n \e[43m Installing CUDNN 8.1 ... \e[0m \n"; 
        gdown https://drive.google.com/uc?id=145G84LZnHNi6QsCGX_7OAKrunSoKoKIa
        gdown https://drive.google.com/uc?id=1QjexX5lXDN4Qjf8hOfbB0iV1pjC0Yp9j
        sudo dpkg -i libcudnn8_8.1.1.33-1+cuda11.2_amd64.deb
        sudo dpkg -i libcudnn8-dev_8.1.1.33-1+cuda11.2_amd64.deb
        sudo ldconfig
+       echo -e "\n \e[42m Done. \e[0m \n"; 
 fi
 cd ..
 
@@ -58,6 +66,7 @@ cd ..
 ### Download all the YOLO / OpenPose weights ###
 ################################################
 cd ./data
+echo -e "\n \e[43m Downloading YOLO / OpenPose weights ... \e[0m \n"; 
 #Download weights for face recognition.
 #Source: https://github.com/spmallick/learnopencv/tree/master/AgeGender
 mkdir -p face && cd face
@@ -84,11 +93,12 @@ wget -nc --no-check-certificate 'https://docs.google.com/uc?export=download&id=1
 wget -nc --no-check-certificate 'https://docs.google.com/uc?export=download&id=10aXSD_odnugZAw6tGRTqpTio3tOOgVNa' -O yolov3-df2.cfg
 wget -nc --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1P2BtqrIKbz2Dtp3qfPCkvp16bj9xSVIw' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1P2BtqrIKbz2Dtp3qfPCkvp16bj9xSVIw" -O yolov3-df2_15000.weights && rm -rf /tmp/cookies.txt
 cd ../../..
-
+echo -e "\n \e[42m Done. \e[0m \n"; 
 
 ################################################
 ###    Install python3.7 and Dependencies    ###
 ################################################
+echo -e "\n \e[43m Installing python3.7 and Dependencies ... \e[0m \n"; 
 sudo apt-get install build-essential
 sudo apt-get install zlib1g-dev
 sudo apt-get install software-properties-common
@@ -100,22 +110,26 @@ sudo apt-get install python3-pip -y
 sudo python3.7 -m pip install --upgrade pip setuptools wheel
 sudo python3.7 -m pip install -r dependencies/python_dependencies/requirements.txt
 sudo python3.7 -m pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+echo -e "\n \e[42m Done. \e[0m \n"; 
 
 ################################################
 ###      Download and Install Mask-RCNN      ###
 ################################################
 # From: https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md
+echo -e "\n \e[43m Download and Install Mask-RCNN ... \e[0m \n"; 
 python3.7 -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
-
+echo -e "\n \e[42m Done. \e[0m \n";
 
 ################################################
 ###         Download and Install Yolo        ###
 ################################################
+echo -e "\n \e[43m Download and Install Yolo ... \e[0m \n"; 
 cd dependencies/yolo
 bash install.sh $model
 cd ../..
 rm -rf install/
- 
+echo -e "\n \e[42m Done. \e[0m \n";
+
 echo -e "\n \e[42mInstall complete, well done !!! \e[0m \n"; 
 
 

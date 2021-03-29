@@ -18,13 +18,13 @@ Chairs are further divided into two subgroups: taken and empty.
 
 This package is currently only working on Ubuntu 16.04 and on computer with a NVIDIA graphic card.
 
-### 1. Install NVIDIA Driver (version 460)
+### 1. Install NVIDIA Cuda 11.2
 
-This NVIDIA driver is required for the CUDA version we use (CUDA 11.2). The driver 460 is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required driver at [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx?lang=en-us). Be careful if you are using a different driver that the 460 you should also check the compatibility with CUDA 11.2.
-Execute this script and follow instruction to install the NVIDIA Driver 460.
+This installation of Cuda is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required version at [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)..
+Execute this script and follow instruction to install the NVIDIA Driver 11.2.
 
 ```buildoutcfg
-install_nvidia_driver.sh 
+install_cuda.sh 
 ```
 
 Then reboot your computer to finish installation.
@@ -34,7 +34,7 @@ sudo reboot
 ```
 
 
-### 2. Other Dependencies (CUDNN, CUDA, MaskRCNN, YOLO and OpenPose)
+### 2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
 
 Install dependencies with install.sh.
 
@@ -42,12 +42,11 @@ Install dependencies with install.sh.
 bash install.sh
 ```
 
-The installation script include for CUDNN, CUDA, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
+The installation script include for CUDNN, mask-RCNN, yolo (darknet, used for clothing detection), weights, python 3.7 and python dependencies.
 
-If you encountered problems with CUDNN or CUDA install you can foolow the official tutorials by NVIDIA:
+If you encountered problems with CUDNN install you can folow the official tutorials by NVIDIA:
 
 More information on the [Nvidia CUDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
-More information on the [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 The dependencies can also be installed individually with:
 

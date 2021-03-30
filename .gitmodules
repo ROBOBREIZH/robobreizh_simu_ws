@@ -1,6 +1,4 @@
-[submodule "src/robobreizh_dialog"]
-	path = src/robobreizh_dialog
-	url = https://github.com/ROBOBREIZH/robobreizh_dialog.git
+
 [submodule "src/robobreizh_navigation"]
 	path = src/robobreizh_navigation
 	url = https://github.com/ROBOBREIZH/robobreizh_navigation.git

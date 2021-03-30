@@ -3,7 +3,6 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 
 d = generate_distutils_setup(
-    scripts=['scripts/main.py'],
     packages=['perception'],
     package_dir={'': 'src'}
 )

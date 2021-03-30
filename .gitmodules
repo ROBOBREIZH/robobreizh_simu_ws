@@ -4,3 +4,6 @@
 [submodule "src/robobreizh_perception"]
 	path = src/robobreizh_perception
 	url = https://github.com/ROBOBREIZH/robobreizh_perception.git
+[submodule "src/robobreizh_dialog"]
+	path = src/robobreizh_dialog
+	url = https://github.com/ROBOBREIZH/robobreizh_dialog.git

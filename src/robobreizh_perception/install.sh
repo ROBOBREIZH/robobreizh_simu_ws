@@ -12,6 +12,10 @@ else
 	exit 1
 fi
 
+mkdir -p install/ && cd install/
+sudo apt-get install python-pip
+pip install gdown
+
 ################################################
 ###      Install CUDNN if not existing       ###
 ################################################

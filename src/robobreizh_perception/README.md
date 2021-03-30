@@ -55,9 +55,20 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
+## Webcam/Camera demo
+
+A webcam/camera demo is available:
+
+```
+cd src/robobreizh_perception/src
+python3 video_demo.py
+```
+
+It will perform pose estimation and object detection by using the video feed from a camera connected to the computer.
+
 ## Start the server
 
-You should launch it in a seperate terminal as follow:
+The server is started as follow:
 
 ```buildoutcfg
 cd src/robobreizh_perception/src

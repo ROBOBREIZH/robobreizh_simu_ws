@@ -1,4 +1,3 @@
-
 [submodule "src/robobreizh_navigation"]
 	path = src/robobreizh_navigation
 	url = https://github.com/ROBOBREIZH/robobreizh_navigation.git

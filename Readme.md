@@ -27,7 +27,7 @@ To be sure of getting all new commits from submodules, the first time you will c
 git submodule update --init --recursive
 ```
 
-Then, each time you want you can pull any neww commit from submodules using:
+Then, each time you want you can pull any new commit from submodules using:
 ```buildoutcfg
 git pull --recurse-submodules
 ```

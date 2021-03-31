@@ -2,12 +2,56 @@ RoboBreizh Simulation Workspace
 ==============
 
 ## Contents
-1. [Environment](#1-environment)
-2. [Installation](#2-installation)
-3. [Usage](#3-usage)
+1. [Git Usage](#1-git-usage)
+2. [Environment](#2-environment)
+3. [Installation](#3-installation)
+4. [Usage](#4-usage)
+
+## 1. Git Usage 
+
+This repository is built upon differents submodules. The current architecture is:
+```buildoutcfg
+|src:
+|---gazebo_environment: not a submodule, contains Gazebo simulation environments and Pepper simulated robot files. 
+|---robobreizh_navigation: Navigation submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_navigation).
+|---robobreizh_dialog: Dialog submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_dialog).
+|---robobreizh_perception: Perception submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_perception).
+```
+
+To clone the repository:
+```buildoutcfg
+sudo apt-get install git
+git clone --recursive https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
+```
+
+To be sure of getting all new commits from submodules, the first time you will clone this repository you need to update them:
+```buildoutcfg
+git submodule update --init --recursive
+```
+
+Then, each time you want you can pull any neww commit from submodules using:
+```buildoutcfg
+git pull --recurse-submodules
+```
+or simply
+```buildoutcfg
+git submodule update --recursive --remote
+```
+
+If you want to pull only one submodule you can by using:
+```buildoutcfg
+git submodule update <specific path to submodule>
+```
+
+If you want to fetch new commits from one submodule
+```buildoutcfg
+cd src/submodule_name
+git fetch
+git checkout
+```
 
 
-## 1. Environment 
+## 2. Environment 
 The code of this workspace works with Ubuntu 16.04 and ROS Kinetic. 
 Some parts have been fork from others repositories:
 
@@ -23,9 +67,9 @@ Control and Pepper Description packages
 
 [https://github.com/awesomebytes/pepper_robot](https://github.com/awesomebytes/pepper_robot)
 
-## 2. Installation
+## 3. Installation
 
-### 2.1. Simulation Environment and Navigation Package
+### 3.1. Simulation Environment and Navigation Package
 
 To use this repository we assume that you have a working install of ROS Kinetic.
 Follow the steps to install this workspace:
@@ -33,7 +77,7 @@ Follow the steps to install this workspace:
 
 ```buildoutcfg
 sudo apt-get install git
-git clone https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
+git clone --recursive https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
 ```
 
 2. Install the dependencies
@@ -49,9 +93,9 @@ chmod +x ./install.sh && ./install.sh
 catkin_make && source devel/setup.bash
 ```
 
-### 2.2. Perception Package
+### 3.2. Perception Package
 
-#### 2.2.1. Install NVIDIA Cuda 11.2
+#### 3.2.1. Install NVIDIA Cuda 11.2
 
 This installation of Cuda is compatible with most of the RTX / GTX / TITAN architecture, if you have another GPU please check the compatibility and download the required version at [Nvidia CUDA Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)..
 Execute this script and follow instruction to install the NVIDIA Driver 11.2.
@@ -67,7 +111,7 @@ Then reboot your computer to finish installation.
 sudo reboot 
 ```
 
-#### 2.2.2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
+#### 3.2.2. Other Dependencies (CUDNN, MaskRCNN, YOLO and OpenPose)
 
 Install dependencies with install.sh.
 
@@ -89,9 +133,9 @@ cd dependencies/install/{NAME_OF_DEPENDENCY}
 bash install.sh
 ```
 
-## 3. Usage
+## 4. Usage
 
-### 3.1. Start the Gazebo Simulation
+### 4.1. Start the Gazebo Simulation
 To launch the main environment for the RoboCup@Home 2021 execute the following command:
 
 ```buildoutcfg
@@ -104,7 +148,7 @@ Another test environment can be launch as follow:
 roslaunch simulation test_env.launch
 ```
 
-### 3.2. Mapping 
+### 4.2. Mapping 
 To perform mapping in one of the environment do (you should have the simulation running beforehand):
 
 ```buildoutcfg
@@ -144,7 +188,7 @@ roslaunch navigation navigation.launch map_file:=path_to_my_map/my_map.yaml
 
 Then when you'll see Rviz window you will need to define the initial position of the robot using the 2D pose estimate tool.
 
-### 3.4. Perception
+### 4.4. Perception
 
 The Perception package is build as a server and is not yet implemented with ROS.
 

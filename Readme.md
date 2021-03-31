@@ -10,13 +10,11 @@ RoboBreizh Simulation Workspace
 ## 1. Git Usage 
 
 This repository is built upon differents submodules. The current architecture is:
-```buildoutcfg
-|src:
-|---gazebo_environment: not a submodule, contains Gazebo simulation environments and Pepper simulated robot files. 
-|---robobreizh_navigation: Navigation submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_navigation).
-|---robobreizh_dialog: Dialog submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_dialog).
-|---robobreizh_perception: Perception submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_perception).
-```
+- src
+	- gazebo_environment: not a submodule, contains Gazebo simulation environments and Pepper simulated robot files.
+	- robobreizh_navigation: Navigation submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_navigation).
+	- robobreizh_dialog: Dialog submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_dialog).
+	- robobreizh_perception: Perception submodule, can be clone independantly, see the [original repository](https://github.com/ROBOBREIZH/robobreizh_perception).
 
 To clone the repository:
 ```buildoutcfg

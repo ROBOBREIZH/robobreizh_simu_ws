@@ -31,10 +31,6 @@ Then, each time you want you can pull any new commit from submodules using:
 ```buildoutcfg
 git pull --recurse-submodules
 ```
-or simply
-```buildoutcfg
-git submodule update --recursive --remote
-```
 
 If you want to pull only one submodule you can by using:
 ```buildoutcfg

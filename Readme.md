@@ -167,7 +167,7 @@ Then, in the Rviz window, you can publish 5 different points (using publish poin
 ![Order for the points](images/sequence_of_points.png)
 
 
-### 3.3. Navigation
+### 4.3. Navigation
 
 The navigation is performed through the [ROS Navigation Stack](http://wiki.ros.org/navigation). If you are using the robocup environment you can launch the navigation easily:
 

@@ -1,0 +1,7 @@
+set(navigation_SETUP_PY_SETUP_MODULE "distutils.core")
+set(navigation_SETUP_PY_VERSION "0.0.0")
+set(navigation_SETUP_PY_SCRIPTS "")
+set(navigation_SETUP_PY_PACKAGES "navigation")
+set(navigation_SETUP_PY_PACKAGE_DIRS "src/navigation")
+set(navigation_SETUP_PY_MODULES "")
+set(navigation_SETUP_PY_MODULE_DIRS "")

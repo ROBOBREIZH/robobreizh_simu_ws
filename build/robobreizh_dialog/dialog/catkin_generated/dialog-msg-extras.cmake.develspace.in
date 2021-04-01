@@ -1,0 +1,2 @@
+set(dialog_MESSAGE_FILES "/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/dialog/msg/Wav.msg;/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/dialog/msg/File.msg;/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/dialog/msg/T2S.msg")
+set(dialog_SERVICE_FILES "/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/dialog/srv/listen.srv;/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/dialog/srv/speak.srv")

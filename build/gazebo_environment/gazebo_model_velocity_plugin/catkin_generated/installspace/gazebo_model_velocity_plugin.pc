@@ -1,0 +1,8 @@
+prefix=/home/maelic/robobreizh_simu_ws/install
+
+Name: gazebo_model_velocity_plugin
+Description: Description of gazebo_model_velocity_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

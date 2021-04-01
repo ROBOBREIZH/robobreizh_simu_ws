@@ -1,0 +1,8 @@
+prefix=/home/maelic/robobreizh_simu_ws/devel
+
+Name: mbot_nlu_classifiers
+Description: Description of mbot_nlu_classifiers
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

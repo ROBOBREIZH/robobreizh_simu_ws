@@ -67,22 +67,29 @@ Control and Pepper Description packages
 
 To use this repository we assume that you have a working install of ROS Kinetic.
 Follow the steps to install this workspace:
-1. Clone and update the repository 
+1. Install the right Git version (newest)
 
 ```buildoutcfg
-sudo apt-get install git
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt-get update
+sudo apt-get install git -y
+```
+
+2. Clone this repository and submodules
+
+```buildoutcfg
 git clone --recursive https://github.com/ROBOBREIZH/robobreizh_simu_ws.git
 git submodule update --init --recursive
 ```
 
-2. Install the dependencies
+3. Install the dependencies
 
 ```buildoutcfg
 cd robobreizh_simu_ws
 chmod +x ./install.sh && ./install.sh
 ```
 
-3. Build the workspace
+4. Build the workspace
 
 ```buildoutcfg
 catkin_make && source devel/setup.bash

@@ -1,12 +1,12 @@
 [submodule "src/robobreizh_navigation"]
 	path = src/robobreizh_navigation
-	url = https://github.com/ROBOBREIZH/robobreizh_navigation.git
+	url = https://github.com/ROBOBREIZH/robobreizh_navigation
 	branch = master
 [submodule "src/robobreizh_perception"]
 	path = src/robobreizh_perception
-	url = https://github.com/ROBOBREIZH/robobreizh_perception.git
+	url = https://github.com/ROBOBREIZH/robobreizh_perception
 	branch = master
 [submodule "src/robobreizh_dialog"]
 	path = src/robobreizh_dialog
-	url = https://github.com/ROBOBREIZH/robobreizh_dialog.git
+	url = https://github.com/ROBOBREIZH/robobreizh_dialog
 	branch = master

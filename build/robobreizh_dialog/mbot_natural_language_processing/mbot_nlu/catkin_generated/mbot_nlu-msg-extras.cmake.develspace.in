@@ -1,2 +1,0 @@
-set(mbot_nlu_MESSAGE_FILES "/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/mbot_natural_language_processing/mbot_nlu/ros/msg/Slot.msg;/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/mbot_natural_language_processing/mbot_nlu/ros/msg/ActionSlot.msg;/home/maelic/robobreizh_simu_ws/src/robobreizh_dialog/mbot_natural_language_processing/mbot_nlu/ros/msg/ActionSlotArray.msg")
-set(mbot_nlu_SERVICE_FILES "")

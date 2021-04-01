@@ -1,7 +1,0 @@
-set(mbot_nlu_SETUP_PY_SETUP_MODULE "distutils.core")
-set(mbot_nlu_SETUP_PY_VERSION "1.0.0")
-set(mbot_nlu_SETUP_PY_SCRIPTS "")
-set(mbot_nlu_SETUP_PY_PACKAGES "mbot_nlu;mbot_nlu_ros")
-set(mbot_nlu_SETUP_PY_PACKAGE_DIRS "common/src/mbot_nlu;ros/src/mbot_nlu_ros")
-set(mbot_nlu_SETUP_PY_MODULES "")
-set(mbot_nlu_SETUP_PY_MODULE_DIRS "")

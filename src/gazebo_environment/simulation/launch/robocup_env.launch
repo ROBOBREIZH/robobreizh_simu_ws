@@ -5,6 +5,8 @@
   <include file="$(find pepper_description)/launch/pepper_upload_CPU.launch" />  
   <remap from="/pepper/cmd_vel" to="/cmd_vel" />
   <env name="GAZEBO_MODEL_PATH" value="$(find pepper_gazebo_plugin)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find gazebo_animatedbox)/build:$(optenv GAZEBO_PLUGIN_PATH)"/> -->
+  <!-- =/gazebo_environment/gazebo_animatedbox/build:$GAZEBO_PLUGIN_PATH -->
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
      <arg name="world_name" value="$(find aws_robomaker_small_house_world)/worlds/small_house.world"/>

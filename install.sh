@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get install ros-kinetic-desktop-full -y
 
 #ROS Pepper Dependencies
-sudo apt-get install ros-kinetic-pepper-meshes -y
+sudo yes accept | sudo apt-get install ros-kinetic-pepper-meshes -y
 
 #ROS environment setup
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
